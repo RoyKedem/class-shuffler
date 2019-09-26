@@ -4,31 +4,39 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
-import sys
+import os
+import datetime
+
+#execute the shuffler file to create new seats
+os.system('python shuffler.py')
+#group name
+target = '"זה עוד בוקר ביב׳2"'
+# path of the pictue
+path = r"C:\Users\roykc\Documents\Projects\class-shuffler\pil_text_font.png"
 
 # Replace below path with the absolute path of the \
 #chromedriver in your computer
-driver = webdriver.Chrome(r'C:\Users\roykc\Documents\Projects\class_shuffler\chromedriver.exe')
+driver = webdriver.Chrome(r'C:\Users\roykc\Documents\Projects\class-shuffler\chromedriver.exe')
 
 driver.get("https://web.whatsapp.com/")
 # time.sleep()
 wait = WebDriverWait(driver, 600)
-# Replace 'My Bsnl' with the name of your friend or group name
-target = '"Omer Kedem"'
 
-# Replace the below string with your own message
-string = "nibba what r u doing"
-
+#search group and clicks
 x_arg = '//span[contains(@title,' + target + ')]'
 group_title = wait.until(EC.presence_of_element_located((By.XPATH, x_arg)))
 print (group_title)
 print ("Wait for few seconds")
 group_title.click()
 
-message = driver.find_elements_by_xpath('//*[@id="main"]/footer/div[1]/div[2]/div/div[2]')[0]
-
-message.send_keys(string)
-sendbutton = driver.find_elements_by_xpath('//*[@id="main"]/footer/div[1]/div[3]/button')[0]
-sendbutton.click()
-
+#while not(datetime.datetime.today().weekday() == 5):
+#To send attachments
+#click to add
+driver.find_element_by_css_selector("span[data-icon='clip']").click()
+#add file to send by file path
+driver.find_element_by_css_selector("input[type='file']").send_keys(path)
+#click to send
+time.sleep(2)
+driver.find_element_by_css_selector("span[data-icon='send-light']").click()
+time.sleep(2)
 driver.close()

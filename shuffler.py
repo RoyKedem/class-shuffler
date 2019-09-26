@@ -1,5 +1,5 @@
 import random
-
+import class_map
 file_name = "students.txt"
 
 def collect_students(file_name):
@@ -15,6 +15,8 @@ def collect_students(file_name):
     for x in students_file:
         x = x[0: -1].title()
         students.append(x)
+    students.append([''])
+    students.append([''])
     return students
 
 def shuffle(students):
@@ -27,5 +29,8 @@ def shuffle(students):
     random.shuffle(temp)
     return temp
 
-students = collect_students(file_name)
-shuffled_array = shuffle(students)
+if __name__ == "__main__":
+    students = collect_students(file_name)
+    shuffled_array = shuffle(students)
+    class_map.create_map(shuffled_array)
+    print(shuffled_array)
