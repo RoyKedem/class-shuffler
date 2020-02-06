@@ -45,3 +45,4 @@ def create_map(students):
     
         
     img.save('pil_text_font.png')
+

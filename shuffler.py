@@ -16,7 +16,7 @@ def collect_students(file_name):
         x = x[0: -1].title()
         students.append(x)
     students.append([''])
-    students.append([''])
+    students.append(['Segev Kazav'])
     return students
 
 def shuffle(students):

@@ -10,7 +10,7 @@ import datetime
 #execute the shuffler file to create new seats
 os.system('python shuffler.py')
 #group name
-target = '"זה עוד בוקר ביב׳2"'
+target = '"RoyKedem"'
 # path of the pictue
 path = r"C:\Users\roykc\Documents\Projects\class-shuffler\pil_text_font.png"
 
